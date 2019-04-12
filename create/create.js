@@ -2,9 +2,10 @@ var User = require('mongoose');
 
 // create a new user
 var newUser = mongoose.Schema({
-  name: 'Peter Quill',
-  email: 'starlord55@avengers.com',
-  age: '32',
+  name: Peter,
+  surname: Quill,
+  email: starlord55@avengers.com,
+  dateOfBirth: 32,
   gender: male
 });
 
