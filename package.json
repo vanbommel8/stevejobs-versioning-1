@@ -1,0 +1,25 @@
+{
+  "name": "stevejobs-versioning-1",
+  "version": "1.0.0",
+  "description": "Versioning test",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanbommel8/stevejobs-versioning-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanbommel8/stevejobs-versioning-1/issues"
+  },
+  "homepage": "https://github.com/vanbommel8/stevejobs-versioning-1#readme"
+}
