@@ -1,17 +1,10 @@
 var User = require('mongoose');
 
 // create a new user
-var newUser = mongoose.Schema({
-  name: Peter,
-  surname: Quill,
-  email: starlord55@avengers.com,
-  dateOfBirth: 32,
-  gender: male
-});
 
-// save the user
-newUser.save(function(err) {
-  if (err) throw err;
+  var newUser = new User({ name: 'Mario ', });
+  newUser.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+  });
 
-  console.log('User created!');
-});
