@@ -1,8 +1,14 @@
 const express = require('express');
 // eslint-disable-next-line new-cap
 const router = express.Router();
-
-router.post('/',
+const {check} = require('express-validator/check');
+router.post('/',[
+  check('name').exists(),
+  check('surname').exists(),
+  check('email').isEmail(),
+  check('dateOfBirth').exists(),
+  check('gender').exists(),
+],
   function(req, res) {
     const newUser = new User(req.body);
     newUser.save(function(err) {
