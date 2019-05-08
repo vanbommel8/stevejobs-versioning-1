@@ -14,5 +14,5 @@ db.once('open', function() {
 });
 
 var User = require('./models/model');
-app.listen(3001)
+app.listen("3001")
 module.exports=app;
