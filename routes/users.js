@@ -11,6 +11,14 @@ router.post('/',
     });
   });
 
+  router.get('/', function(req, res) {
+    User.find(function(err, users) {
+      if (err) return res.status(500).json({error: err});
+      res.json(users);
+    });
+  });
+  
+ 
 
 module.exports = router;
 
