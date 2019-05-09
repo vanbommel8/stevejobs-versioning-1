@@ -26,6 +26,13 @@ router.post('/',
       res.json(user);
     });
   });
+  router.get('/:name', function(req, res) {
+    User.findOne({_id: req.params.name}, function(err, user) {
+      if (err) return res.status(500).json({error: err});
+      if (!user) return res.status(404).json({message: 'Utente non trovato'});
+      res.json(user);
+    });
+  });
 
   router.put('/:id', function(req, res) {
     User.findOne({_id: req.params.id})
@@ -45,6 +52,7 @@ router.post('/',
           });
         });
   });
+  
   router.delete('/:id', function(req, res) {
     User.findOne({_id: req.params.id})
         .exec(function(err, user) {
