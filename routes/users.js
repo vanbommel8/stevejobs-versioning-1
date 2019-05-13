@@ -27,7 +27,7 @@ router.post('/',
     });
   });
   router.get('/name/:name', function(req, res) {
-    User.findOne({name: req.params.name}, function(err, user) {
+    User.find({name: req.params.name}, function(err, user) {
       if (err) return res.status(500).json({error: err});
       if (!user) return res.status(404).json({message: 'Utente non trovato'});
       res.json(user);

@@ -10,13 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/vanbommel8/stevejobs-versioning-1.git"
   },
-<<<<<<< HEAD
   "author": "",
   "license": "ISC",
-=======
-  "author": "Angeek94",
-  "license": "MIT",
->>>>>>> bac021f4fa1688226bd23a0a72c76188148b623f
   "bugs": {
     "url": "https://github.com/vanbommel8/stevejobs-versioning-1/issues"
   },
