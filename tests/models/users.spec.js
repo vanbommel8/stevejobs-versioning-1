@@ -13,10 +13,10 @@ describe('User.create()', () => {
 
   it('Create new User Document', async () => {
     const newUser = {
-      name: 'Fabrizio',
-      surname: 'Bianchi',
-      age: 22,
-      email: 'fabrizio@gmail.com',
+      name: 'Mario',
+      surname: 'Rossi',
+      age: 25,
+      email: 'Mario@gmail.com',
     };
     const user = await User.create(newUser);
     expect(user).has.property('name', newUser.name);
