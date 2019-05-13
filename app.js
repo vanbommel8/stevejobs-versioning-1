@@ -1,12 +1,11 @@
 var mongoose = require('mongoose');
 var express = require("express");
 var bodyParser = require("body-parser");
-var app = express();
-app.use(bodyParser.json());
+
+
 const routes = require('./routes/index');
 const usersRoutes = require('./routes/users');
-app.use('/', routes);
-app.use('/users', usersRoutes);
+
 
 
 const host = 'localhost';
@@ -24,7 +23,14 @@ db.once('open', function() {
 
     console.log('DB connection Ready');
   
-});
+}); 
+
+var app = express();
+app.use(bodyParser.json());
+
+app.use('/', routes);
+app.use('/users', usersRoutes);
+
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
