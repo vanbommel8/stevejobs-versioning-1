@@ -13,6 +13,16 @@ describe('GET /', () => {
       expect(result.status).to.be.equal(200);
     });
   });
+  describe('GET /', () => {
+    const expectedResponse = {message: 'API Works'};
+    it('Test index API payload', async () => {
+      const result = await chai.request(app).get('/');
+      expect(result.body).to.be.deep.equal(expectedResponse);
+      expect(result.status).to.be.equal(200);
+    });
+  });
+ 
+
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
     it('Test 404 route payload', async () => {
