@@ -114,7 +114,7 @@ describe('SEARCH /', function () {
   user.save(function (err, data) {
       chai.request(app)
       .get('/users/' + data.id)
-      .end(function (err, res) {
+      .end(function ( res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('object');
           expect(res.body._id).to.equal(data.id);
