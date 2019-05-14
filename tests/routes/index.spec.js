@@ -76,11 +76,11 @@ it('test per cercare un utente tramite nome: ', function (done) {
   });
   user.save(function (err, user) {
       chai.request(app)
-      .get('/users/' + user.id)
+      .get('/users/' + user.name)
       .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('object');
-          expect(res.body._id).to.equal(user.name);
+          expect(res.body.name).to.equal(user.name);
           done();
       });
   });
