@@ -34,8 +34,26 @@ describe('GET /', () => {
             gender: 'M'
         };
 
+        chai.request(app)
+        .post('/users')
+        .send(newUser)
+        .end(function (err, res) {
+            expect(res.status).to.equal(201);
+            expect(res.body).to.be.a('object');
+            expect(res.body).to.have.a.property('name');
+            expect(res.body).to.have.a.property('surname');
+            expect(res.body).to.have.a.property('email');
+            expect(res.body).to.have.a.property('dateOfBirth');
+            expect(res.body).to.have.a.property('gender');
+            expect(res.body._id).to.exist;
+            done();
+        });
+});
 
- 
+
+});
+
+
 
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
