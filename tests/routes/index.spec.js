@@ -126,7 +126,6 @@ describe('SEARCH /', function () {
 
 
 
-
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
     it('Test 404 route payload', async () => {
