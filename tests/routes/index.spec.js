@@ -138,7 +138,7 @@ describe('SEARCH/NAME', function () {
       .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('array');
-          expect(res.body[1].name).to.equal(user.name);
+          expect(res.body[1].name).to.equal(data.name);
           done();
       });
   });
