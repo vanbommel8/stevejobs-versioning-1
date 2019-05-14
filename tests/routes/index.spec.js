@@ -56,8 +56,7 @@ describe('GET /', () => {
 
 
 
-describe('/PUT', function () {
-  // PUT user
+describe('PUT /', function () {
   it('Dovrebbe aggiornare un singolo user', function (done) {
   
       let newUser = new User({
