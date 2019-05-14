@@ -124,7 +124,7 @@ describe('SEARCH /', function () {
 });
 })
 describe('SEARCH/NAME', function () {
-  it('test per cercare un utente tramite id: ', function (done) {
+  it('test per cercare utenti tramite nome: ', function (done) {
   let user = new User ({
       name: "Steve",
       surname: "Rogers",
