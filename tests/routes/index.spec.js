@@ -114,7 +114,7 @@ describe('SEARCH /', function () {
   user.save(function (err, data) {
       chai.request(app)
       .get('/users/' + data.id)
-      .end(function ( res) {
+      .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('object');
           expect(res.body._id).to.equal(data.id);
@@ -123,27 +123,28 @@ describe('SEARCH /', function () {
   });
 });
 })
-
-describe('NAME/SEARCH/', function () {
-  it('test per cercare degli utenti tramite nome: ', function (done) {
+describe('SEARCH /', function () {
+  it('test per cercare un utente tramite id: ', function (done) {
   let user = new User ({
-      name: "Antman",
-      surname: "Marvel",
-      email: "Antman@avengers.com",
+      name: "Steve",
+      surname: "Rogers",
+      email: "captainamerica@avengers.com",
       dateOfBirth: "04-07-1918",
       gender: "M"
   });
-  user.save(function (err, user) {
-    chai.request(app)
-    .get('/users/name/' + user.id)
-    .end(function ( res) {
-        expect(res.status).to.equal(200);
-        expect(res.body).to.be.a('array');
-        done();
+  user.save(function (err, data) {
+      chai.request(app)
+      .get('/users/name/' + data.name)
+      .end(function (err, res) {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.be.a('array');
+         
+          done();
       });
   });
 });
 })
+
 
 
   describe('404 Route', () => {
