@@ -102,6 +102,30 @@ describe('DELETE /', function () {
 })
 
 
+describe('SEARCH /', function () {
+  it('test per cercare un utente tramite id: ', function (done) {
+  let user = new User ({
+      name: "Steve",
+      surname: "Rogers",
+      email: "captainamerica@avengers.com",
+      dateOfBirth: "04-07-1918",
+      gender: "M"
+  });
+  user.save(function (err, data) {
+      chai.request(app)
+      .get('/users/' + data.id)
+      .end(function (err, res) {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.be.a('object');
+          expect(res.body._id).to.equal(data.id);
+          done();
+      });
+  });
+});
+})
+
+
+
 
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
