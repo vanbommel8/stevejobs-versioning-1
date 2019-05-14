@@ -124,6 +124,27 @@ describe('SEARCH /', function () {
 });
 })
 
+describe('NAME/SEARCH/', function () {
+  it('test per cercare degli utenti tramite nome: ', function (done) {
+  let user = new User ({
+      name: "Antman",
+      surname: "Marvel",
+      email: "Antman@avengers.com",
+      dateOfBirth: "04-07-1918",
+      gender: "M"
+  });
+  user.save(function (err, user) {
+      chai.request(app)
+      .get('/users/' + data.id)
+      .end(function (err, res) {
+          expect(res.status).to.equal(200);
+          expect(res.body).to.be.a('array');
+          expect(res.body.name).to.equal(user.name);
+          done();
+      });
+  });
+});
+})
 
 
   describe('404 Route', () => {
