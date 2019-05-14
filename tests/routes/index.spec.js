@@ -123,7 +123,7 @@ describe('SEARCH /', function () {
   });
 });
 })
-describe('SEARCH /', function () {
+describe('SEARCH/NAME', function () {
   it('test per cercare un utente tramite id: ', function (done) {
   let user = new User ({
       name: "Steve",
@@ -138,7 +138,7 @@ describe('SEARCH /', function () {
       .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('array');
-         
+          expect(res.body[1].name).to.equal(user.name);
           done();
       });
   });
