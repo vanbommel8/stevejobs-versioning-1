@@ -82,3 +82,45 @@ describe('PUT /', function () {
       expect(result.status).to.be.equal(404);
     });
   });
+
+  it('test per cercare un utente tramite id: ', function (done) {
+    let user = new User ({
+        name: "Giuseppe",
+        surname: "Privitera",
+        email: "giuseppeprivitera@libero.it",
+        dateOfBirth: "10-05-2000",
+        sex: "Maschio"
+    });
+    user.save(function (err, data) {
+        chai.request(app)
+        .get('/users/' + data.id)
+        .end(function (err, res) {
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.a('object');
+            expect(res.body._id).to.equal(data.id);
+            done();
+        });
+    });
+});
+
+it("test per eliminare un utente ", function (done) {
+
+  const response = { message: 'Utente eliminato correttamente' };
+
+  let user = new User ({
+      name: "Giuseppe",
+      surname: "Privitera",
+      email: "giuseppe.privitera@gmail.com",
+      dateOfBirth: "27-10-2000",
+      sex: "Maschio"
+  });
+  user.save((err, user) => {
+      chai.request(app)
+      .del('/users/' + user.id)
+      .end((err, res) => {
+          expect(res.body).to.be.deep.equal(response);
+          expect(res.status).to.equal(200);
+          done();
+      });
+  });
+});
