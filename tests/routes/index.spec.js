@@ -138,7 +138,7 @@ describe('NAME/SEARCH/', function () {
       .get('/users/' + user.name)
       .end(function (err, res) {
           expect(res.status).to.equal(200);
-          expect(res.body).to.be.a('array');
+          expect(res.body).to.be.a('[object]');
           expect(res.body.name).to.equal(user.name);
           done();
       });
