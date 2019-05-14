@@ -75,7 +75,6 @@ describe('PUT /', function () {
               .end(function (err, res) {
                   expect(res.status).to.equal(200);
                   expect(res.body).to.be.a('object');
-                  expect(res.body).to.have.a.property('message').equal('User updated!'); 
                   expect(res.body.user).to.have.a.property('surname').equal('Ragnarok');                                       
                   done();
               });
