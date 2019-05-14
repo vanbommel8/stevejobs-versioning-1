@@ -135,7 +135,7 @@ describe('NAME/SEARCH/', function () {
   });
   user.save(function (err, user) {
       chai.request(app)
-      .get('/users/' + data.id)
+      .get('/users/' + user.name)
       .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('array');
