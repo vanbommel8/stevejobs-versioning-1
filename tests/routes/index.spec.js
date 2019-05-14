@@ -139,7 +139,8 @@ describe('NAME/SEARCH/', function () {
       .end(function (err, res) {
           expect(res.status).to.equal(200);
           expect(res.body).to.be.a('[object]');
-          expect(res.body.name).to.equal(user.name);
+          expect(res.body[1].name).to.equal(user.name);
+          expect(res.body[2].name).to.equal(user.name);
           done();
       });
   });
