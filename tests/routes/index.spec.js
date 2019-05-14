@@ -74,6 +74,35 @@ describe('PUT /', function () {
 })
 
 
+
+
+
+describe('DELETE /', function () {
+  it("testiamo l'eliminazione di un utente ", function (done) {
+
+  const response = { message: 'Utente eliminato correttamente' };
+
+  let user = new User ({
+      name: "Banana",
+      surname: "Joe",
+      email: "bananajoeo@gmail.com",
+      dateOfBirth: "22-12-2012",
+      gender: "M"
+  });
+  user.save((err, user) => {
+      chai.request(app)
+      .del('/users/' + user.id)
+      .end((err, res) => {
+          expect(res.body).to.be.deep.equal(response);
+          expect(res.status).to.equal(200);
+          done();
+      });
+  });
+});
+})
+
+
+
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
     it('Test 404 route payload', async () => {
