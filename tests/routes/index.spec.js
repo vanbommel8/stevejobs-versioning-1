@@ -58,32 +58,28 @@ describe('GET /', () => {
 
 
 describe('PUT /', function () {
-  it('Dovrebbe aggiornare un singolo user', function (done) {
-  
-      let newUser = new User({
-          name: 'Thanos',
-          surname: 'Rossi',
-          email: 'thanos@gmail.com',
-          dateOfBirth: '24-08-1204',
-          gender: 'M'
-      });
+  it('Dovrebbe aggiornare un singolo User cercato per id: PUT', function (done) {
+        
+    let user = new User ({
+      name: 'Thanos',
+      surname: 'Rossi',
+      email: 'thanos@gmail.com',
+      dateOfBirth: '24-08-1204',
+      gender: 'M'
+    });
 
-      newUser.save(function (err, newUser) {
-          chai.request(app)
-              .put('/users/' + newUser.id)
-              .send({name: 'Thanos', surname: 'Ragnarok', email: 'thanos@gmail.com', dateOfBirth: '24-08-1204', gender: 'M'})
-              .end(function (err, res) {
-                  expect(res.status).to.equal(200);
-                  expect(res.body).to.be.a('object');
-                  expect(res.body.user).to.have.a.property('surname').equal('Ragnarok');                                       
-                  done();
-              });
-      });
-  });
-
+    user.save(function (err, user) {
+        chai.request(app)
+        .put('/users/' + user.id)
+        .end(function (err, res) {
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.a('object');
+            expect(res.body._id).to.equal(user.id);
+            done();
+        });
+    });
 });
-
-
+})
 
 
   describe('404 Route', () => {
@@ -94,4 +90,3 @@ describe('PUT /', function () {
       expect(result.status).to.be.equal(404);
     });
   });
-  
