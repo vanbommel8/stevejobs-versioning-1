@@ -21,6 +21,20 @@ describe('GET /', () => {
       expect(result.status).to.be.equal(200);
     });
   });
+
+
+  describe('POST /', function () {
+    it('Dovrebbe aggiungere un singolo user', function (done) {
+    
+        let newUser = {
+            name: 'Thanos',
+            surname: 'Rossi',
+            email: 'thanos@gmail.com',
+            dateOfBirth: '24-08-1204',
+            gender: 'M'
+        };
+
+
  
 
   describe('404 Route', () => {
