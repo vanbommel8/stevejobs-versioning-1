@@ -134,14 +134,12 @@ describe('NAME/SEARCH/', function () {
       gender: "M"
   });
   user.save(function (err, user) {
-      chai.request(app)
-      .get('users/name/' + user.name)
-      .end(function (err, res) {
-          expect(res.status).to.equal(200);
-          expect(res.body).to.be.a('[object]');
-          expect(res.body[1].name).to.equal(res.body[1].name);
-          expect(res.body[2].name).to.equal(res.body[2].name);
-          done();
+    chai.request(app)
+    .get('/users/name/' + user.id)
+    .end(function ( res) {
+        expect(res.status).to.equal(200);
+        expect(res.body).to.be.a('array');
+        done();
       });
   });
 });
