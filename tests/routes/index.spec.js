@@ -55,6 +55,38 @@ describe('GET /', () => {
 
 
 
+
+describe('/PUT', function () {
+  // PUT user
+  it('Dovrebbe aggiornare un singolo user', function (done) {
+  
+      let newUser = new User({
+          name: 'Thanos',
+          surname: 'Rossi',
+          email: 'thanos@gmail.com',
+          dateOfBirth: '24-08-1204',
+          gender: 'M'
+      });
+
+      newUser.save(function (err, newUser) {
+          chai.request(app)
+              .put('/users/' + newUser.id)
+              .send({name: 'Thanos', surname: 'Ragnarok', email: 'thanos@gmail.com', dateOfBirth: '24-08-1204', gender: 'M'})
+              .end(function (err, res) {
+                  expect(res.status).to.equal(200);
+                  expect(res.body).to.be.a('object');
+                  expect(res.body).to.have.a.property('message').equal('User updated!'); 
+                  expect(res.body.user).to.have.a.property('surname').equal('Ragnarok');                                       
+                  done();
+              });
+      });
+  });
+
+});
+
+
+
+
   describe('404 Route', () => {
     const expectedResponse = {message: 'Not Found', error: {status: 404}};
     it('Test 404 route payload', async () => {
